@@ -13,6 +13,7 @@ import {
   Upload,
   BarChart,
   Menu,
+  ArrowRight,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -138,8 +139,16 @@ const AdminDashboard = () => {
         <div className="grid gap-4 lg:grid-cols-2">
           {/* Recent Learners */}
           <Card>
-            <CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
               <CardTitle>Recent Learners</CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/admin/users')}
+              >
+                View All
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
