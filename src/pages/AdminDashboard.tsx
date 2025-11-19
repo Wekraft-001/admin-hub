@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { isAuthenticated, logout, mockStats, mockLearners, mockModules } from '@/lib/mockData';
+import { AdminLayout } from '@/components/AdminLayout';
+import { mockStats, mockLearners, mockModules } from '@/lib/mockData';
 import { 
   Users, 
   BookOpen, 
   TrendingUp, 
   Award,
-  LogOut,
   PlusCircle,
   Upload,
   BarChart,
-  Menu,
   ArrowRight,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -24,17 +23,6 @@ const AdminDashboard = () => {
   const [stats] = useState(mockStats);
   const [recentLearners] = useState(mockLearners.slice(0, 5));
   const [topModules] = useState(mockModules.slice(0, 3));
-
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate('/admin/login');
-    }
-  }, [navigate]);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
-  };
 
   const statCards = [
     {
@@ -68,24 +56,8 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-10 border-b bg-card">
-        <div className="flex h-16 items-center justify-between px-6">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-            <h1 className="text-xl font-semibold">Admin Dashboard</h1>
-          </div>
-          <Button variant="ghost" size="sm" onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
-            Logout
-          </Button>
-        </div>
-      </header>
-
-      <div className="p-6 space-y-6">
+    <AdminLayout>
+      <div className="space-y-6">
         {/* Welcome Message */}
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Welcome back, Admin</h2>
@@ -204,7 +176,7 @@ const AdminDashboard = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 

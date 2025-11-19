@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
+import { AdminLayout } from '@/components/AdminLayout';
 import {
   Select,
   SelectContent,
@@ -20,12 +20,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { isAuthenticated, mockLearners, mockModules, type Learner } from '@/lib/mockData';
+import { mockLearners, mockModules, type Learner } from '@/lib/mockData';
 import {
   Search,
   Filter,
   Download,
-  ArrowLeft,
   Calendar,
   Clock,
   Award,
@@ -34,7 +33,6 @@ import {
 import { useToast } from '@/hooks/use-toast';
 
 const UserManagement = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [learners, setLearners] = useState<Learner[]>(mockLearners);
   const [filteredLearners, setFilteredLearners] = useState<Learner[]>(mockLearners);
@@ -43,12 +41,6 @@ const UserManagement = () => {
   const [completionFilter, setCompletionFilter] = useState<string>('all');
   const [selectedLearner, setSelectedLearner] = useState<Learner | null>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate('/admin/login');
-    }
-  }, [navigate]);
 
   useEffect(() => {
     let filtered = [...learners];
@@ -100,24 +92,16 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-10 border-b bg-card">
-        <div className="flex h-16 items-center justify-between px-6">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={() => navigate('/admin/dashboard')}>
-              <ArrowLeft className="h-5 w-5" />
-            </Button>
-            <h1 className="text-xl font-semibold">User Management</h1>
-          </div>
+    <AdminLayout>
+      <div className="space-y-6">
+        {/* Header Actions */}
+        <div className="flex items-center justify-between">
+          <h2 className="text-3xl font-bold tracking-tight">User Management</h2>
           <Button variant="outline" size="sm" onClick={handleExport}>
             <Download className="mr-2 h-4 w-4" />
             Export CSV
           </Button>
         </div>
-      </header>
-
-      <div className="p-6 space-y-6">
         {/* Search and Filters */}
         <Card>
           <CardHeader>
@@ -334,7 +318,7 @@ const UserManagement = () => {
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </AdminLayout>
   );
 };
 
