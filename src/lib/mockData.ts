@@ -23,6 +23,33 @@ export interface Module {
   unlockCriteria?: string;
 }
 
+export interface Certificate {
+  id: string;
+  learnerId: string;
+  learnerName: string;
+  learnerEmail: string;
+  templateId: string;
+  templateName: string;
+  issuedDate: string;
+  completionDate: string;
+  certificateNumber: string;
+}
+
+export interface CertificateTemplate {
+  id: string;
+  name: string;
+  description: string;
+  backgroundColor: string;
+  textColor: string;
+  borderStyle: 'solid' | 'dashed' | 'double' | 'none';
+  includeCompletionDate: boolean;
+  includeSignature: boolean;
+  generationRule: 'automatic' | 'manual';
+  completionThreshold: number;
+  isActive: boolean;
+  createdDate: string;
+}
+
 export interface Stats {
   totalLearners: number;
   activeModules: number;
@@ -159,3 +186,86 @@ export const login = (email: string, password: string): boolean => {
 export const logout = (): void => {
   localStorage.removeItem(AUTH_KEY);
 };
+
+// Mock certificate templates
+export const mockCertificateTemplates: CertificateTemplate[] = [
+  {
+    id: '1',
+    name: 'Standard Completion',
+    description: 'Default certificate for course completion',
+    backgroundColor: '#FFFFFF',
+    textColor: '#1F2937',
+    borderStyle: 'solid',
+    includeCompletionDate: true,
+    includeSignature: true,
+    generationRule: 'automatic',
+    completionThreshold: 100,
+    isActive: true,
+    createdDate: '2024-01-01',
+  },
+  {
+    id: '2',
+    name: 'Excellence Award',
+    description: 'Certificate for top performers',
+    backgroundColor: '#FEF3C7',
+    textColor: '#92400E',
+    borderStyle: 'double',
+    includeCompletionDate: true,
+    includeSignature: true,
+    generationRule: 'manual',
+    completionThreshold: 95,
+    isActive: true,
+    createdDate: '2024-01-15',
+  },
+  {
+    id: '3',
+    name: 'Participation',
+    description: 'Certificate for course participation',
+    backgroundColor: '#DBEAFE',
+    textColor: '#1E3A8A',
+    borderStyle: 'solid',
+    includeCompletionDate: false,
+    includeSignature: false,
+    generationRule: 'automatic',
+    completionThreshold: 50,
+    isActive: false,
+    createdDate: '2024-02-01',
+  },
+];
+
+// Mock issued certificates
+export const mockIssuedCertificates: Certificate[] = [
+  {
+    id: '1',
+    learnerId: '2',
+    learnerName: 'Michael Chen',
+    learnerEmail: 'michael.c@example.com',
+    templateId: '1',
+    templateName: 'Standard Completion',
+    issuedDate: '2024-02-15',
+    completionDate: '2024-02-15',
+    certificateNumber: 'CERT-2024-001',
+  },
+  {
+    id: '2',
+    learnerId: '6',
+    learnerName: 'Amanda White',
+    learnerEmail: 'amanda.w@example.com',
+    templateId: '1',
+    templateName: 'Standard Completion',
+    issuedDate: '2024-02-10',
+    completionDate: '2024-02-10',
+    certificateNumber: 'CERT-2024-002',
+  },
+  {
+    id: '3',
+    learnerId: '7',
+    learnerName: 'Robert Brown',
+    learnerEmail: 'robert.b@example.com',
+    templateId: '2',
+    templateName: 'Excellence Award',
+    issuedDate: '2024-02-20',
+    completionDate: '2024-02-18',
+    certificateNumber: 'CERT-2024-003',
+  },
+];
