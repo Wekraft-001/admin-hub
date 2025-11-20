@@ -9,6 +9,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserManagement from "./pages/UserManagement";
 import AdminModules from "./pages/AdminModules";
+import AdminCertificates from "./pages/AdminCertificates";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<UserManagement />} />
           <Route path="/admin/modules" element={<AdminModules />} />
+          <Route path="/admin/certificates" element={<AdminCertificates />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
