@@ -11,6 +11,7 @@ import UserManagement from "./pages/UserManagement";
 import AdminModules from "./pages/AdminModules";
 import AdminCertificates from "./pages/AdminCertificates";
 import AdminReports from "./pages/AdminReports";
+import AdminMediaLibrary from "./pages/AdminMediaLibrary";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/admin/modules" element={<AdminModules />} />
           <Route path="/admin/certificates" element={<AdminCertificates />} />
           <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/admin/media" element={<AdminMediaLibrary />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

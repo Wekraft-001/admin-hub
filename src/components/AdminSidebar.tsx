@@ -1,4 +1,4 @@
-import { LayoutDashboard, Users, BookOpen, Award, BarChart } from 'lucide-react';
+import { LayoutDashboard, Users, BookOpen, Award, BarChart, FolderOpen } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import {
   Sidebar,
@@ -18,6 +18,7 @@ const items = [
   { title: 'Modules', url: '/admin/modules', icon: BookOpen },
   { title: 'Certificates', url: '/admin/certificates', icon: Award },
   { title: 'Reports', url: '/admin/reports', icon: BarChart },
+  { title: 'Media Library', url: '/admin/media', icon: FolderOpen },
 ];
 
 export function AdminSidebar() {
