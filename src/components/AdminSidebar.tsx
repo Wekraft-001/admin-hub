@@ -28,7 +28,7 @@ export function AdminSidebar() {
     <Sidebar className={open ? 'w-60' : 'w-14'} collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Admin Portal</SidebarGroupLabel>
+          {/* <SidebarGroupLabel>Admin Portal</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

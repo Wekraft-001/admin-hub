@@ -33,7 +33,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
             <div className="flex h-16 items-center justify-between px-6">
               <div className="flex items-center gap-4">
                 <SidebarTrigger />
-                <h1 className="text-xl font-semibold">Admin Portal</h1>
+                {/* <h1 className="text-xl font-semibold">Admin Portal</h1> */}
               </div>
               <Button variant="ghost" size="sm" onClick={handleLogout}>
                 <LogOut className="mr-2 h-4 w-4" />
