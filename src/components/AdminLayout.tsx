@@ -41,7 +41,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               </Button>
             </div>
           </header>
-          <main className="flex-1 p-6 bg-slate-500/30">{children}</main>
+          <main className="flex-1 p-6">{children}</main>
         </div>
       </div>
     </SidebarProvider>

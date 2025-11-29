@@ -1,5 +1,12 @@
-import { LayoutDashboard, Users, BookOpen, Award, BarChart, FolderOpen } from 'lucide-react';
-import { NavLink } from '@/components/NavLink';
+import {
+  LayoutDashboard,
+  Users,
+  BookOpen,
+  Award,
+  BarChart,
+  FolderOpen,
+} from "lucide-react";
+import { NavLink } from "@/components/NavLink";
 import {
   Sidebar,
   SidebarContent,
@@ -10,25 +17,28 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   useSidebar,
-} from '@/components/ui/sidebar';
+} from "@/components/ui/sidebar";
+import Logo from "@/assets/AA-LOGO.svg";
 
 const items = [
-  { title: 'Dashboard', url: '/admin/dashboard', icon: LayoutDashboard },
-  { title: 'Users', url: '/admin/users', icon: Users },
-  { title: 'Modules', url: '/admin/modules', icon: BookOpen },
-  { title: 'Certificates', url: '/admin/certificates', icon: Award },
-  { title: 'Reports', url: '/admin/reports', icon: BarChart },
-  { title: 'Media Library', url: '/admin/media', icon: FolderOpen },
+  { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
+  { title: "Users", url: "/admin/users", icon: Users },
+  { title: "Modules", url: "/admin/modules", icon: BookOpen },
+  { title: "Certificates", url: "/admin/certificates", icon: Award },
+  { title: "Reports", url: "/admin/reports", icon: BarChart },
+  { title: "Media Library", url: "/admin/media", icon: FolderOpen },
 ];
 
 export function AdminSidebar() {
   const { open } = useSidebar();
 
   return (
-    <Sidebar className={open ? 'w-60' : 'w-14'} collapsible="icon">
+    <Sidebar className={open ? "w-60" : "w-14"} collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Logo</SidebarGroupLabel>
+          <div>
+            <img src={Logo} />
+          </div>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

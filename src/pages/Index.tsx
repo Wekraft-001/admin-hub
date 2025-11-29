@@ -45,7 +45,7 @@ const Index = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button className="w-full">Go to Admin Login</Button>
+              <button className="w-full bg-[#038835] text-white font-semibold rounded-lg p-2">Go to Admin Login</button>
             </CardContent>
           </Card>
 
