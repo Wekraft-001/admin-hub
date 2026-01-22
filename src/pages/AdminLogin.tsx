@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { login } from '@/lib/mockData';
-import { Lock } from 'lucide-react';
+import Logo from '@/assets/AA-LOGO.svg';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,6 @@ const AdminLogin = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
     setTimeout(() => {
       const success = login(email, password);
       
@@ -42,50 +41,86 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-slate-500/30">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1 text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <Lock className="h-6 w-6 text-primary" />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <div className="w-full max-w-md">
+        {/* Logo and Welcome Section */}
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-6">
+            <img 
+              src={Logo} 
+              alt="African Alliance Logo" 
+              className="h-20 w-auto"
+            />
           </div>
-          <CardTitle className="text-2xl font-bold">Admin Portal</CardTitle>
-          <CardDescription>
-            Sign in to access the admin dashboard
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="admin@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Signing in...' : 'Sign In'}
-            </Button>
-          </form>
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            Demo credentials: admin@example.com / admin123
+          <h1 className="text-2xl font-bold text-foreground mb-2">
+            Welcome to the Learning Portal
+          </h1>
+          <p className="text-muted-foreground">
+            Empowering growth through knowledge and development
           </p>
-        </CardContent>
-      </Card>
+        </div>
+
+        {/* Login Card */}
+        <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm">
+          <CardHeader className="space-y-1 text-center pb-4">
+            <CardTitle className="text-xl font-semibold text-foreground">
+              Admin Portal
+            </CardTitle>
+            <CardDescription>
+              Sign in to manage your learning platform
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-foreground">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="h-11 border-input focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-foreground">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="h-11 border-input focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Signing in...' : 'Sign In'}
+              </Button>
+            </form>
+            
+            <div className="mt-6 pt-4 border-t border-border">
+              <p className="text-center text-sm text-muted-foreground">
+                Demo credentials
+              </p>
+              <p className="text-center text-xs text-muted-foreground mt-1">
+                admin@example.com / admin123
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Footer Message */}
+        <p className="text-center text-xs text-muted-foreground mt-6">
+          © 2024 African Alliance. All rights reserved.
+        </p>
+      </div>
     </div>
   );
 };
