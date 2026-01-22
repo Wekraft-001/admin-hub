@@ -23,10 +23,10 @@ import Logo from "@/assets/AA-LOGO.svg";
 const items = [
   { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
   { title: "Users", url: "/admin/users", icon: Users },
-  { title: "Modules", url: "/admin/modules", icon: BookOpen },
-  { title: "Certificates", url: "/admin/certificates", icon: Award },
+  // { title: "Modules", url: "/admin/modules", icon: BookOpen },
+  // { title: "Certificates", url: "/admin/certificates", icon: Award },
   { title: "Reports", url: "/admin/reports", icon: BarChart },
-  { title: "Media Library", url: "/admin/media", icon: FolderOpen },
+  // { title: "Media Library", url: "/admin/media", icon: FolderOpen },
 ];
 
 export function AdminSidebar() {
